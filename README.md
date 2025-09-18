@@ -11,43 +11,28 @@
   <script src="assets/WhatsappTracking.js"></script>
   ```
 
-1. **Defina o link de redirecionamento do WhatsApp**
 
-  Por padrão, o número de WhatsApp de redirecionamento deve ser definido após importar o script:
+1. **Defina o webhook e o link de redirecionamento do WhatsApp**
+
+  Antes de usar, defina a URL do webhook e o link de redirecionamento do WhatsApp após importar o script:
 
   ```js
   // Exemplo:
+  WhatsappTracking.setWebhookUrl('https://seu-endpoint.com/webhook');
   WhatsappTracking.setWhatsappRedirect('https://wa.me/5511999999999');
   ```
 
-2. **Adicione o botão inicial na sua página**
+2. **Adicione o botão inicial, input e botão de envio na sua página**
 
-   ```html
-   <button id="btn-whatsapp">Falar no WhatsApp</button>
-   <div id="whatsapp-container"></div>
-   ```
+  ```html
+  <button id="btn-whatsapp">Falar no WhatsApp</button>
+  <input type="tel" id="input-whatsapp" placeholder="Seu número de WhatsApp">
+  <button id="enviar-whatsapp">Enviar</button>
+  ```
 
 3. **Implemente a interface dinâmica**
 
-   Adicione o seguinte script após importar o módulo:
-
-   ```html
-   <script>
-     function mostrarInputWhatsapp() {
-       const container = document.getElementById('whatsapp-container');
-       container.innerHTML = `
-         <input type="tel" id="${WhatsappTracking.inputId}" placeholder="Seu número de WhatsApp" style="padding: 12px; font-size: 16px; border-radius: 6px; border: 1px solid #ccc; margin-right: 10px; width: 220px;">
-         <button class="btn-whatsapp" id="${WhatsappTracking.buttonId}">Enviar</button>
-       `;
-       document.getElementById(WhatsappTracking.buttonId).onclick = function() {
-         const numero = document.getElementById(WhatsappTracking.inputId).value;
-         WhatsappTracking.enviarDadosWhatsapp(numero);
-       };
-       document.getElementById(WhatsappTracking.inputId).focus();
-     }
-     document.getElementById('btn-whatsapp').onclick = mostrarInputWhatsapp;
-   </script>
-   ```
+   O input e o botão de envio já estão presentes no HTML, mas devem começar ocultos. O botão inicial apenas exibe esses campos, e o botão de envio faz o envio dos dados. Veja demo.html para um exemplo completo.
 
 4. **Pronto!**
 
@@ -87,6 +72,8 @@ O módulo expõe os seguintes membros:
 
 ```js
 // Exemplo de integração com a interface:
+WhatsappTracking.setWebhookUrl('https://seu-endpoint.com/webhook');
+WhatsappTracking.setWhatsappRedirect('https://wa.me/5511999999999');
 document.getElementById('enviar-whatsapp').onclick = function() {
   const numero = document.getElementById('input-whatsapp').value;
   WhatsappTracking.enviarDadosWhatsapp(numero);
@@ -120,5 +107,5 @@ Para o funcionamento correto do sistema, a interface deve conter:
 
 ## Observações
 - O módulo não depende de frameworks externos.
-- O webhook e o número de WhatsApp de redirecionamento estão definidos internamente, mas podem ser adaptados conforme necessidade.
+- O webhook e o número de WhatsApp de redirecionamento devem ser definidos pelo usuário antes de usar a biblioteca, usando os métodos `setWebhookUrl` e `setWhatsappRedirect`.
 - O módulo pode ser facilmente extraído para um arquivo JS separado (WhatsappTracking.js) para uso em outros projetos.

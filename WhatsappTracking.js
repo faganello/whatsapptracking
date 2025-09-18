@@ -5,7 +5,7 @@ const WhatsappTracking = (function() {
   // Padrão mínimo para input e botão: ids fixos e estilos básicos
   const inputId = 'input-whatsapp';
   const buttonId = 'enviar-whatsapp';
-  const webhookUrl = 'https://n8n.faganelo.me/webhook-test/90e66f54-5baf-45a5-bde4-ca51aeb96548';
+  let webhookUrl = '';
   let whatsappRedirect = '';
 
   function getUTMParams() {
@@ -25,7 +25,10 @@ const WhatsappTracking = (function() {
       alert('Por favor, preencha o número do WhatsApp antes de enviar.');
       return;
     }
-    // Validação da variável de redirecionamento
+    if (!webhookUrl || webhookUrl.trim() === '') {
+      console.error('WhatsappTracking: webhookUrl não foi definido. Use setWebhookUrl(url) antes de enviar.');
+      return;
+    }
     if (!whatsappRedirect || whatsappRedirect.trim() === '') {
       console.error('WhatsappTracking: whatsappRedirect não foi definido. Use setWhatsappRedirect(url) antes de enviar.');
       return;
@@ -45,8 +48,13 @@ const WhatsappTracking = (function() {
     window.location.href = whatsappRedirect;
   }
 
+
   function setWhatsappRedirect(url) {
     whatsappRedirect = url;
+  }
+
+  function setWebhookUrl(url) {
+    webhookUrl = url;
   }
 
   // Expor função principal para uso externo
@@ -54,6 +62,7 @@ const WhatsappTracking = (function() {
     enviarDadosWhatsapp,
     inputId,
     buttonId,
-    setWhatsappRedirect
+    setWhatsappRedirect,
+    setWebhookUrl
   };
 })();

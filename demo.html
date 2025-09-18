@@ -60,8 +60,12 @@
 
   <script src="https://faganello.github.io/whatsapptracking/WhatsappTracking.js"></script>
   <script>
+    // Configurações do WhatsappTracking =======================================
     // Define a URL de redirecionamento do WhatsApp
     WhatsappTracking.setWhatsappRedirect('https://wa.me/5512982942903');
+    // Define a URL do webhook para onde os dados serão enviados
+    WhatsappTracking.setWebhookUrl('https://n8n.faganelo.me/webhook-test/90e66f54-5baf-45a5-bde4-ca51aeb96548'); 
+    // ========================================================================
 
     // Oculta input e botão de envio ao carregar a página (garantia extra caso o HTML não venha oculto)
     document.getElementById('input-whatsapp').style.display = 'none';
