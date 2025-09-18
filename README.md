@@ -8,7 +8,7 @@
   Adicione a seguinte linha dentro da tag `<head>` ou antes do fechamento do `<body>`:
 
   ```html
-  <script src="assets/WhatsappTracking.js"></script>
+  <script src="https://faganello.github.io/whatsapptracking/WhatsappTracking.js"></script>
   ```
 
 
@@ -32,7 +32,7 @@
 
 3. **Implemente a interface dinâmica**
 
-   O input e o botão de envio já estão presentes no HTML, mas devem começar ocultos. O botão inicial apenas exibe esses campos, e o botão de envio faz o envio dos dados. Veja demo.html para um exemplo completo.
+   O input e o botão de envio já estão presentes no HTML, mas devem começar ocultos. O botão inicial apenas exibe esses campos, e o botão de envio faz o envio dos dados. Veja [demo.html](https://faganello.github.io/whatsapptracking/demo.html) para um exemplo completo.
 
 4. **Pronto!**
 
