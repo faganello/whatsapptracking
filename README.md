@@ -5,11 +5,20 @@
 
 1. **Importe o módulo no seu HTML**
 
-   Adicione a seguinte linha dentro da tag `<head>` ou antes do fechamento do `<body>`:
+  Adicione a seguinte linha dentro da tag `<head>` ou antes do fechamento do `<body>`:
 
-   ```html
-   <script src="assets/WhatsappTracking.js"></script>
-   ```
+  ```html
+  <script src="assets/WhatsappTracking.js"></script>
+  ```
+
+1. **Defina o link de redirecionamento do WhatsApp**
+
+  Por padrão, o número de WhatsApp de redirecionamento deve ser definido após importar o script:
+
+  ```js
+  // Exemplo:
+  WhatsappTracking.setWhatsappRedirect('https://wa.me/5511999999999');
+  ```
 
 2. **Adicione o botão inicial na sua página**
 

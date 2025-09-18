@@ -6,7 +6,7 @@ const WhatsappTracking = (function() {
   const inputId = 'input-whatsapp';
   const buttonId = 'enviar-whatsapp';
   const webhookUrl = 'https://n8n.faganelo.me/webhook-test/90e66f54-5baf-45a5-bde4-ca51aeb96548';
-  const whatsappRedirect = 'https://wa.me/5519997339562';
+  let whatsappRedirect = '';
 
   function getUTMParams() {
     const params = new URLSearchParams(window.location.search);
@@ -21,10 +21,17 @@ const WhatsappTracking = (function() {
   }
 
   async function enviarDadosWhatsapp(numero) {
-    const dados = getUTMParams();
-    if (numero) {
-      dados['whatsapp_number'] = numero;
+    if (!numero || String(numero).trim() === '') {
+      alert('Por favor, preencha o número do WhatsApp antes de enviar.');
+      return;
     }
+    // Validação da variável de redirecionamento
+    if (!whatsappRedirect || whatsappRedirect.trim() === '') {
+      console.error('WhatsappTracking: whatsappRedirect não foi definido. Use setWhatsappRedirect(url) antes de enviar.');
+      return;
+    }
+    const dados = getUTMParams();
+    dados['whatsapp_number'] = numero;
     dados['domain'] = window.location.hostname;
     try {
       await fetch(webhookUrl, {
@@ -38,10 +45,15 @@ const WhatsappTracking = (function() {
     window.location.href = whatsappRedirect;
   }
 
+  function setWhatsappRedirect(url) {
+    whatsappRedirect = url;
+  }
+
   // Expor função principal para uso externo
   return {
     enviarDadosWhatsapp,
     inputId,
-    buttonId
+    buttonId,
+    setWhatsappRedirect
   };
 })();
