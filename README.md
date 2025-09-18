@@ -32,7 +32,8 @@
 
 3. **Implemente a interface dinâmica**
 
-   O input e o botão de envio já estão presentes no HTML, mas devem começar ocultos. O botão inicial apenas exibe esses campos, e o botão de envio faz o envio dos dados. Veja [demo.html](https://faganello.github.io/whatsapptracking/demo.html) para um exemplo completo.
+   O input e o botão de envio já estão presentes no HTML, mas devem começar ocultos. O botão inicial apenas exibe esses campos, e o botão de envio faz o envio dos dados. Veja [demo.html](https://faganello.github.io/whatsapptracking/demo.html?utm_source=tagassistant.google.com&utm_medium=meio_teste&utm_campaign=nome+da+campanha&utm_id=0000123456&utm_term=termo+da+campanha&utm_content=conte%C3%BAdo+da+campanha) para um exemplo completo.
+   
 
 4. **Pronto!**
 
