@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Whatsapp Tracking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+
+    .btn-whatsapp svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div id="whatsapp-container" style="display: flex; align-items: center; gap: 10px; background-color: #25D366; border-radius: 8px; padding: 8px 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.08);">
+  <button class="btn-whatsapp" id="btn-whatsapp" style="background: transparent; color: white; box-shadow: none;">
+      <svg viewBox="0 0 32 32">
+        <path d="M16 .396C7.172.396 0 7.568 0 16.396c0 2.883.75 5.719 2.172 8.211L0 32l7.58-2.093c2.43 1.33 5.168 2.007 8.01 2.007 8.828 0 16-7.172 16-16 0-8.828-7.172-15.996-16-15.996zm0 29.334c-2.477 0-4.918-.66-7.055-1.91l-.508-.299-4.504 1.243 1.25-4.383-.33-.566c-1.283-2.197-1.961-4.703-1.961-7.26 0-7.516 6.117-13.633 13.633-13.633s13.633 6.117 13.633 13.633c0 7.516-6.117 13.633-13.633 13.633zm7.543-10.172c-.416-.207-2.457-1.211-2.84-1.348-.383-.141-.664-.207-.945.207-.277.414-1.086 1.348-1.33 1.629-.24.277-.487.312-.902.104-.416-.207-1.758-.648-3.348-2.062-1.238-1.105-2.074-2.473-2.32-2.887-.24-.416-.026-.64.18-.848.185-.184.414-.48.621-.719.207-.24.276-.414.414-.691.139-.277.07-.519-.035-.727-.104-.207-.945-2.277-1.293-3.121-.34-.816-.688-.707-.945-.719l-.807-.012c-.277 0-.727.104-1.105.519s-1.45 1.414-1.45 3.451c0 2.036 1.484 4.004 1.689 4.277.207.277 2.93 4.492 7.09 6.289 4.164 1.801 4.164 1.203 4.914 1.127.752-.07 2.457-1.004 2.801-1.973.344-.969.344-1.801.24-1.973-.104-.176-.377-.277-.793-.484z"/>
+      </svg>
+      Falar com a gente no WhatsApp
+    </button>
+  <input type="tel" id="input-whatsapp" placeholder="Seu número de WhatsApp" style="padding: 12px; font-size: 16px; border-radius: 6px; border: 1px solid #ccc; width: 220px; display: none; background: white; color: #222;">
+  <button class="btn-whatsapp" id="enviar-whatsapp" style="display: none; height: 43px; background: transparent; color: white; box-shadow: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+    </button>
+  </div>
+
+  <script src="https://faganello.github.io/whatsapptracking/WhatsappTracking.js"></script>
+  <script>
+    // Oculta input e botão de envio ao carregar a página (garantia extra caso o HTML não venha oculto)
+    document.getElementById('input-whatsapp').style.display = 'none';
+    document.getElementById('enviar-whatsapp').style.display = 'none';
+
+    // Ao clicar no botão principal, exibe input e botão de envio
+    document.getElementById('btn-whatsapp').onclick = function() {
+      document.getElementById('btn-whatsapp').style.display = 'none';
+      document.getElementById('input-whatsapp').style.display = '';
+      document.getElementById('enviar-whatsapp').style.display = '';
+      document.getElementById('input-whatsapp').focus();
+    };
+
+    // Ao clicar em enviar, submete os dados
+    document.getElementById('enviar-whatsapp').onclick = function() {
+      const numero = document.getElementById('input-whatsapp').value;
+      WhatsappTracking.enviarDadosWhatsapp(numero);
+    };
+  </script>
+
+</body>
+</html>
