@@ -45,7 +45,7 @@ const WhatsappTracking = (function() {
     } catch (e) {
       console.error('Erro ao enviar para o webhook:', e);
     }
-    window.location.href = whatsappRedirect;
+    window.open(whatsappRedirect, '_blank');
   }
 
 
